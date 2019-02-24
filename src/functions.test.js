@@ -49,11 +49,10 @@ const sum = (num1, num2) => {
 
 // ...
 
-const sumOfArray = (num1, num2) => {
-  let num3 = 0
+const sumOfArray = num1 => {
+  let num2 = 0
   for (let index = 0; index < num1.length; index++) {
-    num3 = num3 + num1[index]
-    num2 = num3 + num2
+    num2 = num2 + num1[index]
   }
   return num2
 }
@@ -97,8 +96,6 @@ const rovarspraket = chosenString => {
     if (isVowel(element)) {
       newString = newString + element
     } else {
-      console.log(element + 'o' + element)
-      // Maybe try .concat()
       newString = newString + (element + 'o' + element)
     }
   }
@@ -114,7 +111,13 @@ const rovarspraket = chosenString => {
 
 // ...
 
-const reverse = flippedWord => {}
+const reverse = toFlipWord => {
+  let flippedWord = ''
+  for (let i = toFlipWord.length - 1; i >= 0; i--) {
+    flippedWord = flippedWord + toFlipWord[i]
+  }
+  return flippedWord
+}
 
 /**
  * Write a function findLongestWord() that takes an
@@ -125,7 +128,15 @@ const reverse = flippedWord => {}
 
 // ...
 
-const findLongestWord = longestWord => {}
+const findLongestWord = forlongestWord => {
+  let splitWord = forlongestWord.split(' ')
+  let longestWord = ''
+  for (let i = 0; i < splitWord.length; i++) {
+    if (splitWord[i].length > longestWord) {
+      longestWord = splitWord[i]
+    }
+    return longestWord
+}
 
 /**
  * NOTE: Don't modify anything below this line...
@@ -154,12 +165,12 @@ test('sum()', t => {
   t.is(sum(4, 100), 104)
 })
 
-// test('sumOfArray()', t => {
-//   t.is(sumOfArray([1, 2]), 3)
-//   t.is(sumOfArray([1, 2, 3]), 6)
-//   t.is(sumOfArray([10, 9, 8]), 27)
-//   t.is(sumOfArray([]), 0)
-// })
+test('sumOfArray()', t => {
+  t.is(sumOfArray([1, 2]), 3)
+  t.is(sumOfArray([1, 2, 3]), 6)
+  t.is(sumOfArray([10, 9, 8]), 27)
+  t.is(sumOfArray([]), 0)
+})
 
 test('isVowel()', t => {
   t.is(isVowel('B'), false)
