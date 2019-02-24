@@ -132,10 +132,13 @@ const findLongestWord = forlongestWord => {
   let splitWord = forlongestWord.split(' ')
   let longestWord = ''
   for (let i = 0; i < splitWord.length; i++) {
-    if (splitWord[i].length > longestWord) {
+    if (splitWord[i].length > longestWord.length) {
       longestWord = splitWord[i]
+    } else if (splitWord[i].length === longestWord.length) {
+      return false
     }
-    return longestWord
+  }
+  return longestWord
 }
 
 /**
@@ -193,7 +196,7 @@ test('reverse()', t => {
 })
 
 test('findLongestWord()', t => {
-  t.is(findLongestWord('book dogs'), 'book')
+  t.is(findLongestWord('book dogs'), false)
   t.is(findLongestWord('life the universe and everything'), 'everything')
 })
 
