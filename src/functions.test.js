@@ -91,16 +91,18 @@ const isVowel = letter => {
 // ...
 
 const rovarspraket = chosenString => {
+  let newString = ''
   for (let i = 0; i < chosenString.length; i++) {
     const element = chosenString[i]
     if (isVowel(element)) {
-      return
+      newString = newString + element
     } else {
+      console.log(element + 'o' + element)
       // Maybe try .concat()
-      return element + 'o' + element
+      newString = newString + (element + 'o' + element)
     }
   }
-  return chosenString
+  return newString
 }
 
 /**
@@ -112,9 +114,7 @@ const rovarspraket = chosenString => {
 
 // ...
 
-const reverse = flippedWord => {
-  return
-}
+const reverse = flippedWord => {}
 
 /**
  * Write a function findLongestWord() that takes an
